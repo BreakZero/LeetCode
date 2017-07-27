@@ -1,4 +1,4 @@
-package com.zero;
+package com.zero.problem1;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,7 +15,7 @@ import java.util.Map;
  * return [0, 1].
  *
  */
-public class TwoSum {
+public class Solution {
     public static void main(String[] args) {
         int[] result = twoSum(new int[]{3, 2, 4, 5, 1}, 6);
         for (int i = 0; i < result.length; i ++) {
@@ -25,22 +25,22 @@ public class TwoSum {
 
     public static int[] twoSum(int[] nums, int target) {
         int len = nums.length;
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> temp = new HashMap<>();
         for (int i = 0; i < len; i++) {
             for (int j = i + 1; j < len; j++) {
                 if (nums[i] + nums[j] == target) {
-                    if (!map.containsKey(i)) {
-                        map.put(i, i);
+                    if (!temp.containsKey(i)) {
+                        temp.put(i, i);
                     }
-                    if (!map.containsKey(j)) {
-                        map.put(j, j);
+                    if (!temp.containsKey(j)) {
+                        temp.put(j, j);
                     }
                 }
             }
         }
-        Iterator it = map.entrySet().iterator();
+        Iterator it = temp.entrySet().iterator();
         int index = 0;
-        int[] result = new int[map.size()];
+        int[] result = new int[temp.size()];
         while (it.hasNext()) {
             Map.Entry entry = (Map.Entry) it.next();
             result[index] = (int) entry.getValue();
